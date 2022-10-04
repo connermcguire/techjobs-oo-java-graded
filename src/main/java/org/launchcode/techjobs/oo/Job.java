@@ -22,13 +22,13 @@ public class Job {
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+    public Job(String name1, Employer employer1, Location location1, PositionType positionType1, CoreCompetency coreCompetency1) {
         this();
-        name = name;
-        employer = employer;
-        location = location;
-        positionType = positionType;
-        coreCompetency = coreCompetency;
+        name = name1;
+        employer = employer1;
+        location = location1;
+        positionType = positionType1;
+        coreCompetency = coreCompetency1;
     }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
@@ -88,5 +88,38 @@ public class Job {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        String total = "";
+        String nameStatus = this.name;
+        String employerStatus = this.employer.toString();
+        String locationStatus = this.location.toString();
+        String positionTypeStatus = this.positionType.toString();
+        String coreCompetencyStatus = this.coreCompetency.toString();
+        if(this.name == null || this.name == "") {
+            nameStatus = "Data not available";
+        }
+        if(this.employer == null || this.employer.toString() == "") {
+            employerStatus = "Data not available";
+        }
+        if(this.location == null || this.location.toString() == "") {
+            locationStatus = "Data not available";
+        }
+        if(this.positionType == null || this.positionType.toString() == "") {
+            positionTypeStatus = "Data not available";
+        }
+        if(this.coreCompetency == null || this.coreCompetency.toString() == "") {
+            coreCompetencyStatus = "Data not available";
+        }
+
+        total = "\nID: " + this.getId() + "\nName: " + nameStatus + "\nEmployer: " + employerStatus + "\nLocation: " + locationStatus + "\nPosition Type: " + positionTypeStatus + "\nCore Competency: " + coreCompetencyStatus + "\n";
+
+        if(nameStatus == "Data Not available" && employerStatus == "Data Not available" && locationStatus == "Data Not available" && positionTypeStatus == "Data Not available" && coreCompetencyStatus == "Data Not available") {
+            total = "OOPS! This job does not seem to exist.";
+        }
+        return total;
+
     }
 }
