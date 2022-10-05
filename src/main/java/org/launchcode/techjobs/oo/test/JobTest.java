@@ -54,6 +54,7 @@ public class JobTest {
 
     @Test
     public void testToStringHandlesEmptyField() {
-
+        Job thisJob = new Job();
+        assertEquals(thisJob.toString(), "OOPS! This job does not seem to exist.");
     }
 }

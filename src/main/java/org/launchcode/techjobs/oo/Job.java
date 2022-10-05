@@ -91,35 +91,39 @@ public class Job {
     }
 
     @Override
-    public String toString() {
+    public String toString() { // write the bottom if as the first line in order to separate an empty job from the variables, put the rest in an else
         String total = "";
-        String nameStatus = this.name;
-        String employerStatus = this.employer.toString();
-        String locationStatus = this.location.toString();
-        String positionTypeStatus = this.positionType.toString();
-        String coreCompetencyStatus = this.coreCompetency.toString();
-        if(this.name == null || this.name == "") {
-            nameStatus = "Data not available";
-        }
-        if(this.employer == null || this.employer.toString() == "") {
-            employerStatus = "Data not available";
-        }
-        if(this.location == null || this.location.toString() == "") {
-            locationStatus = "Data not available";
-        }
-        if(this.positionType == null || this.positionType.toString() == "") {
-            positionTypeStatus = "Data not available";
-        }
-        if(this.coreCompetency == null || this.coreCompetency.toString() == "") {
-            coreCompetencyStatus = "Data not available";
-        }
-
-        total = "\nID: " + this.getId() + "\nName: " + nameStatus + "\nEmployer: " + employerStatus + "\nLocation: " + locationStatus + "\nPosition Type: " + positionTypeStatus + "\nCore Competency: " + coreCompetencyStatus + "\n";
-
-        if(nameStatus == "Data Not available" && employerStatus == "Data Not available" && locationStatus == "Data Not available" && positionTypeStatus == "Data Not available" && coreCompetencyStatus == "Data Not available") {
+        if((this.name) == null && this.employer == null && this.location == null && this. positionType == null && this.coreCompetency == null) {
             total = "OOPS! This job does not seem to exist.";
+        } else {
+            String nameStatus = this.name;
+            String employerStatus = this.employer.toString();
+            String locationStatus = this.location.toString();
+            String positionTypeStatus = this.positionType.toString();
+            String coreCompetencyStatus = this.coreCompetency.toString();
+            if (this.name == null || this.name == "") {
+                nameStatus = "Data not available";
+            }
+            if (this.employer == null || this.employer.toString() == "") {
+                employerStatus = "Data not available";
+            }
+            if (this.location == null || this.location.toString() == "") {
+                locationStatus = "Data not available";
+            }
+            if (this.positionType == null || this.positionType.toString() == "") {
+                positionTypeStatus = "Data not available";
+            }
+            if (this.coreCompetency == null || this.coreCompetency.toString() == "") {
+                coreCompetencyStatus = "Data not available";
+            }
+
+            if (nameStatus == "Data Not available" && employerStatus == "Data Not available" && locationStatus == "Data Not available" && positionTypeStatus == "Data Not available" && coreCompetencyStatus == "Data Not available") {
+                total = "OOPS! This job does not seem to exist.";
+            } else {
+                total = "\nID: " + this.getId() + "\nName: " + nameStatus + "\nEmployer: " + employerStatus + "\nLocation: " + locationStatus + "\nPosition Type: " + positionTypeStatus + "\nCore Competency: " + coreCompetencyStatus + "\n";
+            }
+
         }
         return total;
-
     }
 }
